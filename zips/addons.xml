@@ -54,9 +54,85 @@
     </extension>
 </addon>
 
-<!-- 3- repository -->
+<!-- 3- plugin.video -->
 
-<!-- 3.1- repository.TestRepo -->
+<!-- 3.1- Fen -->
+<addon id="plugin.video.fen" name="Fen" provider-name="Tiki" version="2.5.21">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="script.module.requests" version="2.19.1" />
+        <import addon="script.module.pil" version="1.1.7" />
+        <import addon="script.tikiart" version="1.0.0" />
+        <import addon="script.module.myaccounts" version="0.0.0" />
+        <import addon="script.module.fenomscrapers" version="0.0.0" />
+    </requires>
+    <extension library="resources/lib/fen.py" point="xbmc.python.pluginsource">
+        <provides>video</provides>
+    </extension>
+    <extension library="resources/lib/service.py" point="xbmc.service" />
+    <extension library="resources/lib/" point="xbmc.python.module" />
+    <extension point="kodi.context.item">
+        <menu id="kodi.core.main">
+            <item library="resources/contextmenu/refresh_widgets.py">
+                <label>40001</label>
+                <visible>String.IsEqual(ListItem.Property(fen_widget),true)</visible>
+            </item>
+            <item library="resources/contextmenu/mark_watched.py">
+                <label>40003</label>
+                <visible>[String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode)] + String.IsEqual(ListItem.Property(fen_widget),true) + String.IsEqual(ListItem.Property(fen_playcount),0)</visible>
+            </item>
+            <item library="resources/contextmenu/mark_unwatched.py">
+                <label>40004</label>
+                <visible>[String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode)] + String.IsEqual(ListItem.Property(fen_widget),true) + String.IsEqual(ListItem.Property(fen_playcount),1)</visible>
+            </item>
+            <item library="resources/contextmenu/clear_progress.py">
+                <label>40009</label>
+                <visible>[String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,episode)] + String.IsEqual(ListItem.Property(fen_widget),true) + String.IsEqual(ListItem.Property(fen_in_progress),true)</visible>
+            </item>
+            <item library="resources/contextmenu/browse.py">
+                <label>40002</label>
+                <visible>String.IsEqual(ListItem.dbtype,episode) + String.IsEqual(ListItem.Property(fen_widget),true)</visible>
+            </item>
+            <item library="resources/contextmenu/trakt_manager.py">
+                <label>40005</label>
+                <visible>[String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,tvshow)] + String.IsEqual(ListItem.Property(fen_widget),true)</visible>
+            </item>
+            <item library="resources/contextmenu/favorites_manager.py">
+                <label>40008</label>
+                <visible>[String.IsEqual(ListItem.dbtype,movie) | String.IsEqual(ListItem.dbtype,tvshow)] + String.IsEqual(ListItem.Property(fen_widget),true)</visible>
+            </item>
+            <item library="resources/contextmenu/play_random.py">
+                <label>40010</label>
+                <visible>[String.IsEqual(ListItem.dbtype,tvshow)] + String.IsEqual(ListItem.Property(fen_widget),true)</visible>
+            </item>
+            <item library="resources/contextmenu/options.py">
+                <label>40007</label>
+                <visible>String.IsEqual(ListItem.Property(fen_widget),true)</visible>
+            </item>
+            <item library="resources/contextmenu/extras.py">
+                <label>40006</label>
+                <visible>String.IsEqual(ListItem.Property(fen_widget),true)</visible>
+            </item>
+        </menu>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <reuselanguageinvoker>true</reuselanguageinvoker>
+        <summary lang="en">Mainly used for Furk and Easynews.</summary>
+        <description lang="en">This add-on is intended for advanced Kodi users only. Mainly used for Furk and Easynews(web) account access. Also utilizes Fenomscrapers for those without a Furk or Easynews(web) account. You must have a debrid service to use this add-on without Furk/Easynews.[CR][CR][B]Please Note: This add-on is NOT an Exodus fork, and as such will behave differently to an Exodus fork.[/B]</description>
+        <platform>all</platform>
+		<disclaimer lang="en">The author of this addon do not host any of the content which is found and have no affiliation with any of the content providers. This addon simply searches websites for content. Use at your own risk!</disclaimer>
+        <license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.png</fanart>
+        </assets>
+        <news>INFO: For latest changes see Changelog within Tools of add-on.</news>
+    </extension>
+</addon>
+
+<!-- 4- repository -->
+
+<!-- 4.1- repository.TestRepo -->
 <addon id="repository.testrepo" name="[B][COLOR blue]Test[/COLOR] [COLOR yellow]Repo[/COLOR][/B]" version="1.0.0" provider-name="Test">
 	<extension point="xbmc.addon.repository" name="[B][COLOR red]Test[/COLOR] [COLOR yellow]Repo[/COLOR][/B]">
         <info>https://raw.githubusercontent.com/Kpoodle/Testrepo/main/zips/addons.xml</info>
@@ -74,9 +150,9 @@
 	</extension>
 </addon>
 
-<!-- 4- script.module -->
+<!-- 5- script.module -->
 
-<!-- 4.1- AutoCompletion library -->
+<!-- 5.1- AutoCompletion library -->
 <addon id="script.module.autocompletion" name="AutoCompletion library" version="2.0.3" provider-name="Philipp Temminghoff (phil65),sualfred">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
@@ -95,9 +171,77 @@
     </extension>
 </addon>
 
- <!-- 5- service.subtitles -->
+<!-- 5.2- FenomScrapers Module - Needed for Fen -->
+<addon id="script.module.fenomscrapers" name="FenomScrapers Module" version="2.1.2" provider-name="Mr-Kodi">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="script.module.requests" />
+		<import addon="script.module.myaccounts" version="2.0.0" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="lib/default.py">
+		<provides>executable</provides>
+	</extension> 
+	<extension point="xbmc.service" library="lib/service.py" start="startup" />
+	<extension point="xbmc.python.module" library="lib" /> <!-- Must be placed after xbmc.python.pluginsource, otherwise the addon does not show in the repository. -->
+	<extension point="xbmc.addon.metadata">
+		<reuselanguageinvoker>false</reuselanguageinvoker>
+		<summary lang="en">FenomScrapers Module</summary>
+		<description>Scrape common video host for URL's to be playable in Kodi, simplifying addon development of video plugins requiring multi video hosts.</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum></forum>
+		<website>https://github.com/Mr-Kodi/repository.fenomscrapers</website>
+		<source>https://github.com/Mr-Kodi/repository.fenomscrapers</source>
+		<disclaimer lang="en">The author is not responsible for the use of this addon. The author is not responsible for the content found using this addon. The author does not host or own any content found within this addon.[CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.png</fanart>
+			<screenshot></screenshot>
+		</assets>
+		<news>
+[B][COLOR red]Update - v2.1.2 - Jan. 10, 2022[/COLOR][/B]
+[COLOR yellow]--[/COLOR][I] TORRENTPARADISE site is back up so the scraper has returned.[/I]
+		</news>
+	</extension>
+</addon>
+
+<!-- 5.2- My Accounts Module - Needed for Fen -->
+<addon id="script.module.myaccounts" version="2.0.0" name="My Accounts" provider-name="Venom, Fen">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+		<import addon="script.module.requests" version="2.19.1" />
+	</requires>
+	<extension point="xbmc.python.script" library="lib/default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.service" library="lib/service.py" start="startup" />
+	<extension point="xbmc.python.module" library="lib" /> <!-- Must be placed after xbmc.python.pluginsource, otherwise the addon does not show in the repository. -->
+	<extension point="xbmc.addon.metadata">
+		<reuselanguageinvoker>false</reuselanguageinvoker>
+		<summary lang="en">My Accounts Module</summary>
+		<description>Single placeholder for all your accounts.</description>
+		<platform>all</platform>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 3, 29 June 2007</license>
+		<forum></forum>
+		<website>https://github.com/Mr-Kodi/repository.myaccounts</website>
+		<source>https://github.com/Mr-Kodi/repository.myaccounts</source>
+		<disclaimer lang="en">The author is not responsible for the use of this addon. [CR]The author is in no way affiliated with Kodi, Team Kodi, or the XBMC Foundation.[CR]This is a Non-profit resource, organized solely for educational purposes which is protected under the Fair-Use doctrine of the Copyright Act, Specifically section 107, which does promote freedom of expression, by permitting the unlicensed use of copyright-protected works.</disclaimer>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.png</fanart>
+			<screenshot></screenshot>
+		</assets>
+		<news>
+[B][COLOR red]Update - v2.0.0 - Nov. 23, 2021[/COLOR][/B]
+[COLOR yellow]--[/COLOR][I] First official py3 only version for Kodi Matrix.[/I]
+[COLOR yellow]--[/COLOR][I] Fixed issue with "check for updates" using old github url.[/I]
+		</news>
+	</extension>
+</addon>
+
+ <!-- 6- service.subtitles -->
   
-<!-- 5.1- Wizdom Subs -->
+<!-- 6.1- Wizdom Subs -->
  <addon id="service.subtitles.wizdom" name="Wizdom Subs" version="3.0.3" provider-name="Wizdom">
   <requires>
     <import addon="xbmc.python" version="3.0.0"/>
