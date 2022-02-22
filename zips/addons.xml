@@ -1,1 +1,48 @@
-new
+<?xml version="1.0" encoding="UTF-8"?>
+
+<addons>
+
+<!-- 1- plugin.video -->
+
+<!-- 1.1- a -->
+
+<!-- 2- repository -->
+ 
+ 
+<!-- 2.1- repository.TestRepo -->
+ <addon id="repository.TestRepo" name="[B][COLOR red]Test[/COLOR] [COLOR yellow]Repo[/COLOR][/B]" version="1.0.0" provider-name="Test">
+	<extension point="xbmc.addon.repository" name="[B][COLOR red]Test[/COLOR] [COLOR yellow]Repo[/COLOR][/B]">
+        <info>https://raw.githubusercontent.com/Kpoodle/Testrepo/main/zips/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/Kpoodle/Testrepo/main/zips/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/Kpoodle/Testrepo/main/zips/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary></summary>
+		<description></description>
+		<platform>all</platform>
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+		</assets>
+	</extension>
+</addon>
+
+ <!-- 3- service.subtitles -->
+ 
+ 
+<!-- 3.1- Wizdom Subs -->
+ <addon id="service.subtitles.wizdom" name="Wizdom Subs" version="3.0.3" provider-name="Wizdom">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0"/>
+	<import addon="script.module.requests"/>
+  </requires>
+  <extension point="xbmc.subtitle.module" library="service.py"/>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Wizdom Subs</summary>
+    <description lang="en">Wizdom Subs. Be smart use subs!  &#xA;Visit us at http://wizdom.xyz</description>
+    <language>en</language>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+  </extension>
+</addon>
+
+</addons>
