@@ -25,10 +25,38 @@
         <source></source>
     </extension>
 </addon>
+	
+<!-- 2- context -->
 
-<!-- 2- repository -->
+<!-- 2.1- AutoCompletion for virtual keyboard" -->
+<addon id="plugin.program.autocompletion" name="AutoCompletion for virtual keyboard" version="2.0.1b" provider-name="Philipp Temminghoff (phil65)">
+    <requires>
+        <!--<import addon="xbmc.python" version="2.25.0"/>-->
+        <import addon="script.module.autocompletion" version="1.0.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="plugin.py"/>
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">AutoCompletion for the virtual keyboard (needs skin support)</summary>
+        <description lang="en">AutoCompletion for the virtual keyboard (needs skin support)</description>
+        <platform>all</platform>
+        <license>GNU GENERAL PUBLIC LICENSE Version 2.1, February 1999</license>
+        <source>https://github.com/phil65/plugin.program.autocompletion</source>
+        <assets>
+            <icon>resources/icon.png</icon>
+            <!--            <fanart>resources/fanart.jpg</fanart>-->
+            <!--            <screenshot>resources/screenshot-01.jpg</screenshot>-->
+            <!--            <screenshot>resources/screenshot-02.jpg</screenshot>-->
+            <!--            <screenshot>resources/screenshot-03.jpg</screenshot>-->
+        </assets>
+    </extension>
+</addon>
 
-<!-- 2.1- repository.TestRepo -->
+<!-- 3- repository -->
+
+<!-- 3.1- repository.TestRepo -->
 <addon id="repository.testrepo" name="[B][COLOR blue]Test[/COLOR] [COLOR yellow]Repo[/COLOR][/B]" version="1.0.0" provider-name="Test">
 	<extension point="xbmc.addon.repository" name="[B][COLOR red]Test[/COLOR] [COLOR yellow]Repo[/COLOR][/B]">
         <info>https://raw.githubusercontent.com/Kpoodle/Testrepo/main/zips/addons.xml</info>
@@ -46,10 +74,30 @@
 	</extension>
 </addon>
 
- <!-- 3- service.subtitles -->
- 
- 
-<!-- 3.1- Wizdom Subs -->
+<!-- 4- script.module -->
+
+<!-- 4.1- AutoCompletion library -->
+<addon id="script.module.autocompletion" name="AutoCompletion library" version="2.0.3" provider-name="Philipp Temminghoff (phil65),sualfred">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+        <import addon="script.module.requests" version="2.9.1"/>
+    </requires>
+    <extension point="xbmc.python.module" library="lib" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Module providing some AutoCompletion functions</summary>
+        <description lang="en_GB">Module providing some AutoCompletion functions</description>
+        <platform>all</platform>
+        <license>GPL-2.0-or-later</license>
+        <source>https://github.com/sualfred/script.module.autocompletion</source>
+        <assets>
+            <icon>resources/icon.png</icon>
+        </assets>
+    </extension>
+</addon>
+
+ <!-- 5- service.subtitles -->
+  
+<!-- 5.1- Wizdom Subs -->
  <addon id="service.subtitles.wizdom" name="Wizdom Subs" version="3.0.3" provider-name="Wizdom">
   <requires>
     <import addon="xbmc.python" version="3.0.0"/>
