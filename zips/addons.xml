@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <addons>
-
+	
 <!-- 1- context -->
 
-<!-- 1.1- Subtitles Dialog - Contextmenu -->
+<!-- 2- context -->
+
+<!-- 2.1- Subtitles Dialog - Contextmenu -->
 
 	
-<!-- 2- plugin.program -->
+<!-- 3- plugin.program -->
 
-<!-- 2.1- AutoCompletion for virtual keyboard" -->
+<!-- 3.1- AutoCompletion for virtual keyboard" -->
 <addon id="plugin.program.autocompletion" name="AutoCompletion for virtual keyboard" version="2.0.1b" provider-name="Philipp Temminghoff (phil65)">
     <requires>
         <!--<import addon="xbmc.python" version="2.25.0"/>-->
@@ -36,14 +38,14 @@
 </addon>
 
 
-<!-- 3- plugin.video -->
+<!-- 4- plugin.video -->
 
-<!-- 3.1- Idan Plus -עידן+ פלוס -->
+<!-- 4.1- Idan Plus -עידן+ פלוס -->
 
 
-<!-- 4- repository -->
+<!-- 5- repository -->
 
-<!-- 4.1- repository.TestRepo -->
+<!-- 5.1- repository.TestRepo -->
 <addon id="repository.testrepo" name="[B][COLOR blue]Test[/COLOR] [COLOR yellow]Repo[/COLOR][/B]" version="1.0.0" provider-name="Test">
 	<extension point="xbmc.addon.repository" name="[B][COLOR red]Test[/COLOR] [COLOR yellow]Repo[/COLOR][/B]">
         <info>https://raw.githubusercontent.com/Kpoodle/Testrepo/main/zips/addons.xml</info>
@@ -61,9 +63,9 @@
 	</extension>
 </addon>
 
-<!-- 5- script.module -->
+<!-- 6- script.module -->
 
-<!-- 5.1- AutoCompletion library -->
+<!-- 6.1- AutoCompletion library -->
 <addon id="script.module.autocompletion" name="AutoCompletion library" version="2.0.3" provider-name="Philipp Temminghoff (phil65),sualfred">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
@@ -83,26 +85,6 @@
 </addon>
 
 
- <!-- 6- service.subtitles -->
+ <!-- 7- service.subtitles -->
   
-<!-- 6.1- All Subs Flash -->
-<addon id="service.subtitles.All_Subs" name="All Subs Flash" version="2.4.7" provider-name="Sbs">
-  <requires>
-    
-	<import addon="script.module.requests" version="2.9.1" />
-	<import addon="script.common.plugin.cache" version="2.5.5"/>
-    <import addon="script.subskeys" version="1.0.1"/>
-	<import addon="script.module.chardet" />
-	
-  </requires>
-  <extension point="xbmc.service" library="autosub.py" start="startup"></extension> 
-  <extension point="xbmc.subtitle.module" library="service.py"/>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">All sites Subs Super Speed</summary>
-    <description lang="en">All sites Subs. Subcenter.wizdom,subcene,opensubtitles. Thanks to:Catz,wizdom,manacker,amet</description>
-    <language>en</language>
-    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
-  </extension>
-</addon>
-
-</addons>
+<!-- 7.1- All Subs Flash -->
